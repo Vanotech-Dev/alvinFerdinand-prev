@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Gravitas+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gravitas+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -9,7 +9,7 @@
   --text-primary: #605d5d;
   --text-secondary: #949bad;
   --font-text: "Montserrat", sans-serif;
-  --font-title: "Gravitas One", sans-serif;
+  --font-title: "Inter", sans-serif;
 }
 
 html {
