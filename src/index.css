@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Gravitas+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #949bad;
+  --color-secondary: #353c44;
+  --color-tertiary: #efefef;
+  --color-white: #f7f7f7;
+  --text-primary: #605d5d;
+  --text-secondary: #949bad;
+  --font-text: "Montserrat", sans-serif;
+  --font-title: "Gravitas One", sans-serif;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-tertiary);
+  font-family: var(--font-text);
+  font-weight: 500;
+}
+
+.title {
+  font-family: var(--font-title);
+  font-weight: 500;
+}
+
+.option {
+  background-color: transparent;
+  border: none;
+}
+
+.no-scrollbar {
+  overflow: hidden;
+}
