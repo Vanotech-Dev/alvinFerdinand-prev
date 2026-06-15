@@ -11,8 +11,10 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const skillsSection = document.getElementById("skills");
+
   useEffect(() => {
-    const targetBerhenti = document.getElementById("skills");
+    const targetBerhenti = document.getElementById("about");
 
     if (!targetBerhenti) return;
     const observer = new IntersectionObserver(
@@ -56,7 +58,7 @@ function Navbar() {
 
   const navItem = [
     { to: "/", label: "Home", icons: <House size={15} /> },
-    { to: "/skill", label: "skill" },
+    { to: "/#skills", label: "skill" },
     { to: "/project", label: "project" },
     { to: "/contact", label: "contact" },
   ];
@@ -73,22 +75,27 @@ function Navbar() {
       {!isMobile && (
         <div className="container mx-auto px-20">
           <div
-            className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all flex justify-end ease-in-out duration-300 w-[85vw] ${showNavBar ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-full pointer-events-none"}`}
+            className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all flex justify-end ease-in-out duration-300 text-secondary w-[85vw] ${showNavBar ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-full pointer-events-none"}`}
           >
-            <div className="flex justify-between items-center w-85">
-              {navItem.map((item) => {
-                return (
-                  <Link
-                    to={item.to}
-                    key={item.to}
-                    onClick={() => {
-                      navigate(item.to);
-                    }}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
+            <div className="flex justify-between w-[90vw]">
+              <div className="title text-xl border-bold border-b-3 pb-1">
+                Jakarta - 9.03 PM
+              </div>
+              <div className="flex justify-between items-center w-85 text-secondary">
+                {navItem.map((item) => {
+                  return (
+                    <Link
+                      to={item.to}
+                      key={item.to}
+                      onClick={() => {
+                        navigate(item.to);
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

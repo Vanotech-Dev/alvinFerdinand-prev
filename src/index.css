@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Gravitas+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Gravitas+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -6,10 +6,11 @@
   --color-secondary: #353c44;
   --color-tertiary: #efefef;
   --color-white: #f7f7f7;
+  --color-bold: #11120d;
   --text-primary: #605d5d;
   --text-secondary: #949bad;
   --font-text: "Montserrat", sans-serif;
-  --font-title: "Inter", sans-serif;
+  --font-title: "EB Garamond", sans-serif;
 }
 
 html {
