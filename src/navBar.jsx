@@ -1,6 +1,5 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation, NavLink } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { House, X } from "lucide-react";
 
@@ -11,26 +10,17 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const skillsSection = document.getElementById("skills");
-
   useEffect(() => {
-    const targetBerhenti = document.getElementById("about");
-
-    if (!targetBerhenti) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowNavBar(false);
-        } else {
-          setShowNavBar(true);
-        }
-      },
-      { threshold: 0.2 },
-    );
-    observer.observe(targetBerhenti);
-
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setShowNavBar(false);
+      } else {
+        setShowNavBar(true);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -48,11 +38,21 @@ function Navbar() {
     };
   }, []);
 
+  const handleSkillsClick = () => {
+    const skills = document.getElementById("skills");
+
+    if (skills) {
+      skills.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     }
   }, [isOpen]);
 
@@ -63,12 +63,9 @@ function Navbar() {
     { to: "/contact", label: "contact" },
   ];
 
-  const pageSelected = navItem.find(
-    (item) => item.to === location.pathname,
-  ).label;
-  const iconSelected = navItem.find(
-    (item) => item.to === location.pathname,
-  ).icons;
+  const currentNav = navItem.find((item) => item.to === location.pathname);
+  const pageSelected = currentNav?.label || "Home";
+  const iconSelected = currentNav?.icons || null;
 
   return (
     <>
@@ -88,7 +85,11 @@ function Navbar() {
                       to={item.to}
                       key={item.to}
                       onClick={() => {
-                        navigate(item.to);
+                        if (item.to === "/#skills") {
+                          handleSkillsClick();
+                        } else {
+                          navigate(item.to);
+                        }
                       }}
                     >
                       {item.label}
