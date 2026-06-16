@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useEffect, useState } from "react";
+import { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -66,13 +66,16 @@ function HeroSection() {
         { opacity: 1, y: 0, duration: 0.9, ease: "power2.out", stagger: 0.15 },
       );
 
+      const isMobile = window.innerWidth <= 768;
+
       // About: slide in on scroll
       gsap.fromTo(
         ".about-img",
-        { opacity: 0, x: -40 },
+        { opacity: 0, x: isMobile ? 0 : -40, y: isMobile ? 30 : 0 },
         {
           opacity: 1,
           x: 0,
+          y: 0,
           duration: 0.9,
           ease: "power2.out",
           scrollTrigger: {
@@ -84,13 +87,14 @@ function HeroSection() {
       );
       gsap.fromTo(
         ".about-text",
-        { opacity: 0, x: 40 },
+        { opacity: 0, x: isMobile ? 0 : 40, y: isMobile ? 30 : 0 },
         {
           opacity: 1,
           x: 0,
+          y: 0,
           duration: 0.9,
           ease: "power2.out",
-          delay: 0.2,
+          delay: isMobile ? 0.15 : 0.2,
           scrollTrigger: {
             trigger: aboutRef.current,
             start: "top 90%",
@@ -159,7 +163,7 @@ function HeroSection() {
         className="min-h-screen flex flex-col md:justify-end justify-center items-start p-5 md:p-10"
         id="main"
       >
-        <div className="flex gap-3 md:gap-5 justify-end items-end">
+        <div className="flex gap-3 md:gap-5 justify-center md:justify-end items-center md:items-end">
           <div className="flex gap-3">
             <div className="bg-secondary w-2 md:w-3 h-30 md:h-45 hero-anim"></div>
             <div>
