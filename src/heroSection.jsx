@@ -165,7 +165,7 @@ function HeroSection() {
             <small className="text-primary tracking-widest text-sm md:text-lg mb-3 md:mb-5 pl-3 md:pl-5 hero-anim">
               Hi, I'm a <span className="font-bold">Motion Designer</span>
             </small>
-            <h1 className="title text-secondary text-5xl md:text-9xl tracking-tighter hero-anim">
+            <h1 className="title text-secondary text-5xl md:text-9xl tracking-tighter ">
               Alvin Ferdinand
             </h1>
           </div>
@@ -176,7 +176,7 @@ function HeroSection() {
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-[70vw] flex about-img">
             <img
-              src="image/alvin2.jpeg"
+              src="image/alvin3.jpeg"
               alt="alvin-02"
               className="h-80 md:h-180 w-full md:w-auto object-cover bg-top aspect-auto md:aspect-4/3"
             />

@@ -67,6 +67,8 @@ function Navbar() {
   const pageSelected = currentNav?.label || "Home";
   const iconSelected = currentNav?.icons || null;
 
+  const waktuSekarang = new Date();
+
   return (
     <>
       {!isMobile && (
@@ -76,7 +78,11 @@ function Navbar() {
           >
             <div className="flex justify-between w-[90vw]">
               <div className="title text-xl border-bold border-b-3 pb-1">
-                Jakarta - 9.03 PM
+                Jakarta -{" "}
+                {waktuSekarang.toLocaleTimeString("id-ID", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </div>
               <div className="flex justify-between items-center w-85 text-secondary">
                 {navItem.map((item) => {
@@ -142,9 +148,7 @@ function Navbar() {
                   </li>
 
                   <li>
-                    <Link to="/#skills" onClick={() => setIsOpen(false)}>
-                      Skill
-                    </Link>
+                    <a href="#skills">Skills</a>
                   </li>
 
                   <li>
