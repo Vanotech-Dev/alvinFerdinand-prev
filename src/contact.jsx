@@ -3,9 +3,7 @@ import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
 
 const socials = [
-  { label: "Behance", href: "#" },
   { label: "Instagram", href: "#" },
-  { label: "Dribbble", href: "#" },
   { label: "LinkedIn", href: "#" },
 ];
 
