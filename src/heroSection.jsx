@@ -2,12 +2,9 @@ import { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  Sparkles,
   Film,
-  Monitor,
   Layers,
   ArrowUpRight,
-  Recycle,
   Repeat,
   BriefcaseBusinessIcon,
 } from "lucide-react";

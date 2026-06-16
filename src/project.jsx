@@ -1,177 +1,110 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  ArrowUpRight,
-  Monitor,
-  Play,
-  Tv,
-  PenTool,
-  Box,
-  Palette,
-  Smartphone,
-  Globe,
-  Component,
-  Clapperboard,
-  Camera,
-  Wand2,
-  LayoutGrid,
-  Megaphone,
-  Zap,
-} from "lucide-react";
+import { Video, X } from "lucide-react";
 
-const categories = ["All", "SaaS Explainers", "Looping Animation", "Branding"];
+const categories = ["SaaS Explainer", "Looping", "Branding"];
 
 const projectsData = [
   {
     id: 1,
     title: "Project 1",
-    category: "SaaS Explainers",
+    category: "SaaS Explainer",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    image: null,
-    icon: <Box className="w-8 h-8" />,
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-loop-41855-large.mp4",
   },
   {
     id: 2,
     title: "Project 2",
-    category: "Looping Animation",
+    category: "Looping",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    tools: ["After Effect"],
-    image: null,
-    icon: <Camera className="w-8 h-8" />,
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
+    tools: ["After Effects"],
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-liquid-iridescent-fluid-background-loop-51475-large.mp4",
   },
   {
     id: 3,
     title: "Project 3",
-    category: "SaaS Explainers",
+    category: "Branding",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    image: null,
-    icon: <Tv className="w-8 h-8" />,
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-3d-render-of-abstract-geometric-shapes-48358-large.mp4",
   },
   {
     id: 4,
     title: "Project 4",
-    category: "Branding",
+    category: "SaaS Explainer",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    image: null,
-    icon: <Clapperboard className="w-8 h-8" />,
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-retro-futuristic-grid-background-41617-large.mp4",
   },
   {
     id: 5,
     title: "Project 5",
-    category: "SaaS Explainers",
+    category: "Looping",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    image: null,
-    icon: <LayoutGrid className="w-8 h-8" />,
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-loop-41855-large.mp4",
   },
   {
     id: 6,
     title: "Project 6",
-    category: "Looping Animation",
+    category: "Branding",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    image: null,
-    icon: <Smartphone className="w-8 h-8" />,
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-liquid-iridescent-fluid-background-loop-51475-large.mp4",
   },
   {
     id: 7,
     title: "Project 7",
-    category: "SaaS Explainers",
+    category: "SaaS Explainer",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    image: null,
-    icon: <Zap className="w-8 h-8" />,
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-3d-render-of-abstract-geometric-shapes-48358-large.mp4",
   },
   {
     id: 8,
     title: "Project 8",
-    category: "Looping Animation",
+    category: "Looping",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    image: null,
-    icon: <PenTool className="w-8 h-8" />,
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-retro-futuristic-grid-background-41617-large.mp4",
   },
   {
     id: 9,
     title: "Project 9",
-    category: "SaaS Explainers",
+    category: "Branding",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    image: null,
-    icon: <Monitor className="w-8 h-8" />,
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-loop-41855-large.mp4",
   },
   {
     id: 10,
     title: "Project 10",
-    category: "Branding",
+    category: "Looping",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    image: null,
-    icon: <Palette className="w-8 h-8" />,
-  },
-  {
-    id: 11,
-    title: "Project 11",
-    category: "Looping Animation",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    tools: ["After Effects"],
-    image: null,
-    icon: <Play className="w-8 h-8" />,
-  },
-  {
-    id: 12,
-    title: "Project 12",
-    category: "SaaS Explainers",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    tools: ["After Effects"],
-    image: null,
-    icon: <Globe className="w-8 h-8" />,
-  },
-  {
-    id: 13,
-    title: "Project 13",
-    category: "Branding",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    tools: ["After Effects"],
-    image: null,
-    icon: <Megaphone className="w-8 h-8" />,
-  },
-  {
-    id: 14,
-    title: "Project 14",
-    category: "Looping Animation",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    tools: ["After Effects"],
-    image: null,
-    icon: <Component className="w-8 h-8" />,
-  },
-  {
-    id: 15,
-    title: "Project 15",
-    category: "SaaS Explainers",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    tools: ["After Effects"],
-    image: null,
-    icon: <Wand2 className="w-8 h-8" />,
+    video:
+      "https://assets.mixkit.co/videos/preview/mixkit-liquid-iridescent-fluid-background-loop-51475-large.mp4",
   },
 ];
 
@@ -179,6 +112,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Project() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [hoveredProjectId, setHoveredProjectId] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   const headerRef = useRef(null);
   const listRef = useRef(null);
 
@@ -218,98 +153,217 @@ function Project() {
   return (
     <>
       {/* Header */}
-      <section className="pt-28 pb-16 px-10" ref={headerRef}>
+      <section className="pt-24 md:pt-28 pb-8 px-5 md:px-10" ref={headerRef}>
         <small className="text-primary tracking-widest text-sm mb-4 block proj-header">
           Portfolio — {projectsData.length} Projects
         </small>
-        <h1 className="title text-secondary text-6xl md:text-8xl tracking-tighter proj-header">
+        <h1 className="title text-secondary text-5xl md:text-8xl tracking-tighter proj-header">
           Selected Work
         </h1>
       </section>
 
-      {/* Filter */}
-      <section className="px-10 pb-10 border-b border-secondary/10">
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className={`px-4 py-2 text-sm tracking-wider transition-colors duration-200 cursor-pointer
-                ${
-                  activeFilter === cat
-                    ? "text-secondary font-semibold border-b-2 border-secondary"
-                    : "text-secondary/40 hover:text-secondary/70"
-                }`}
-            >
-              {cat}
-            </button>
-          ))}
+      {/* Main Content Area */}
+      <section className="px-5 md:px-10 pb-20" ref={listRef}>
+        <div className="flex flex-col md:flex-row gap-10 md:gap-16">
+          {/* Sidebar (Desktop only) */}
+          <aside className="hidden md:block w-52 shrink-0">
+            <div className="sticky top-28 flex flex-col gap-8">
+              <div>
+                <h2 className="title text-secondary/40 text-xs tracking-widest uppercase mb-4 font-semibold">
+                  Categories
+                </h2>
+                <ul className="flex flex-col gap-4 font-title text-xl text-secondary">
+                  {categories.map((cat) => (
+                    <li key={cat}>
+                      <button
+                        onClick={() => setActiveFilter(cat)}
+                        className={`cursor-pointer text-left transition-all duration-250 relative py-0.5
+                          ${
+                            activeFilter === cat
+                              ? "text-secondary font-bold"
+                              : "text-secondary/50 hover:text-secondary/80"
+                          }`}
+                      >
+                        {cat}
+                        {activeFilter === cat && (
+                          <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-secondary" />
+                        )}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Reset Filter Button */}
+              {activeFilter !== "All" && (
+                <button
+                  onClick={() => setActiveFilter("All")}
+                  className="self-start text-xs uppercase tracking-widest text-secondary hover:text-secondary/75 font-semibold underline underline-offset-4 cursor-pointer transition-all duration-200"
+                >
+                  Reset Filter
+                </button>
+              )}
+            </div>
+          </aside>
+
+          {/* Mobile Filter Bar */}
+          <div className="md:hidden w-full flex flex-wrap items-center gap-3 pb-6 border-b border-secondary/10 mb-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className={`px-4 py-2 text-xs uppercase tracking-wider rounded-full transition-all duration-200 shrink-0 cursor-pointer
+                  ${
+                    activeFilter === cat
+                      ? "bg-secondary text-white font-semibold shadow-sm"
+                      : "bg-secondary/5 text-secondary/60 hover:bg-secondary/10"
+                  }`}
+              >
+                {cat}
+              </button>
+            ))}
+            {activeFilter !== "All" && (
+              <button
+                onClick={() => setActiveFilter("All")}
+                className="px-3 py-2 text-xs uppercase tracking-wider text-secondary underline underline-offset-4 cursor-pointer font-bold transition-colors"
+              >
+                Reset
+              </button>
+            )}
+          </div>
+
+          {/* Project Grid */}
+          <div className="flex-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              {filteredProjects.map((project) => (
+                <div
+                  key={project.id}
+                  onClick={() => setSelectedProject(project)}
+                  onMouseEnter={() => setHoveredProjectId(project.id)}
+                  onMouseLeave={() => setHoveredProjectId(null)}
+                  className="group flex flex-col cursor-pointer proj-item"
+                >
+                  {/* Thumbnail / Video Container */}
+                  <div className="w-full aspect-square overflow-hidden bg-secondary/5 relative rounded-sm shadow-[0_4px_20px_rgba(0,0,0,0.015)] flex flex-col items-center justify-center border border-secondary/5">
+                    {hoveredProjectId === project.id ? (
+                      <video
+                        src={project.video}
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center gap-3 transition-all duration-500 group-hover:scale-105">
+                        <Video className="w-8 h-8 text-secondary/35 group-hover:text-secondary/60 transition-colors duration-300" />
+                        <span className="text-[9px] tracking-widest uppercase text-secondary/25 group-hover:text-secondary/45 transition-colors duration-300 font-semibold">
+                          Hover to Preview
+                        </span>
+                      </div>
+                    )}
+                    {/* Dark subtle overlay on hover */}
+                    <div className="absolute inset-0 bg-secondary/2 opacity-0 group-hover:opacity-100 transition-opacity duration-350 pointer-events-none" />
+                  </div>
+
+                  {/* Typography */}
+                  <div className="text-center mt-5">
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-secondary font-text group-hover:text-secondary/75 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs text-primary/75 mt-1.5 font-title italic">
+                      {project.category}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {filteredProjects.length === 0 && (
+              <div className="text-center py-20 text-secondary/40 font-title text-xl">
+                No projects found.
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* Project List */}
-      <section className="px-10 py-10" ref={listRef}>
-        <div className="flex flex-col">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="group border-b border-secondary/10 py-8 flex flex-col md:flex-row gap-6 md:gap-10 cursor-pointer hover:bg-secondary/2 transition-colors duration-200 md:px-2 proj-item"
+      {/* Modal Detail Proyek */}
+      {selectedProject && (
+        <div
+          className="fixed inset-0 z-100 flex items-center justify-center bg-secondary/60 backdrop-blur-xs p-4 cursor-default animate-fade-in"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="bg-tertiary w-full max-w-3xl rounded-lg overflow-hidden shadow-2xl relative border border-secondary/15 flex flex-col md:flex-row max-h-[90vh] md:max-h-none"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-4 right-4 p-1.5 rounded-full bg-secondary/10 hover:bg-secondary/20 text-secondary transition-all cursor-pointer z-10"
             >
-              {/* Thumbnail */}
-              <div className="w-full md:w-64 h-44 shrink-0 overflow-hidden bg-secondary/3">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-secondary/15">
-                    {project.icon}
-                  </div>
-                )}
-              </div>
+              <X className="w-5 h-5" />
+            </button>
 
-              {/* Info */}
-              <div className="flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <span className="text-xs tracking-widest text-secondary/30 block mb-2">
-                        {String(project.id).padStart(2, "0")}
-                      </span>
-                      <h3 className="title text-2xl text-secondary mb-2">
-                        {project.title}
-                      </h3>
-                    </div>
-                    <ArrowUpRight className="w-4 h-4 text-secondary/20 group-hover:text-secondary transition-colors duration-200 mt-1" />
-                  </div>
-                  <p className="text-primary/70 text-sm leading-relaxed mb-4 max-w-xl">
-                    {project.description}
+            {/* Video Preview on Left/Top */}
+            <div className="w-full md:w-1/2 aspect-square md:aspect-auto bg-black flex items-center justify-center shrink-0">
+              <video
+                src={selectedProject.video}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              />
+            </div>
+
+            {/* Info on Right/Bottom */}
+            <div className="p-6 md:p-8 flex flex-col justify-between flex-1 overflow-y-auto">
+              <div>
+                <small className="text-xs uppercase tracking-widest text-primary/60 font-semibold block mb-1">
+                  {selectedProject.category}
+                </small>
+                <h2 className="title text-3xl text-secondary font-bold mb-4">
+                  {selectedProject.title}
+                </h2>
+
+                <div className="mb-6">
+                  <h4 className="text-[10px] uppercase tracking-widest text-secondary/40 font-bold mb-2">
+                    Description
+                  </h4>
+                  <p className="text-sm text-secondary/80 leading-relaxed font-text">
+                    {selectedProject.description}
                   </p>
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className="text-xs tracking-widest text-secondary/30">
-                    {project.category}
-                  </span>
-                  <span className="text-secondary/10">·</span>
-                  <div className="flex gap-2">
-                    {project.tools.map((tool, idx) => (
-                      <span key={idx} className="text-xs text-secondary/40">
-                        {tool}
-                        {idx < project.tools.length - 1 && ","}
-                      </span>
-                    ))}
+              </div>
+
+              <div>
+                <div className="border-t border-secondary/10 pt-4 flex justify-between items-center text-xs">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-widest text-secondary/40 font-bold block mb-0.5">
+                      Tools Used
+                    </span>
+                    <span className="text-secondary/70 font-semibold">
+                      {selectedProject.tools.join(", ")}
+                    </span>
                   </div>
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition-colors cursor-pointer text-xs uppercase tracking-wider font-semibold"
+                  >
+                    Close
+                  </button>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </section>
+      )}
 
       {/* Footer */}
-      <footer className="bg-secondary px-10 py-14 flex flex-col md:flex-row justify-between items-start md:items-end text-tertiary/85 gap-8">
+      <footer className="bg-secondary px-5 md:px-10 py-14 flex flex-col md:flex-row justify-between items-start md:items-end text-tertiary/85 gap-8">
         <div>
           <small className="tracking-widest text-tertiary/40 text-xs uppercase block mb-3">
             Get In Touch
