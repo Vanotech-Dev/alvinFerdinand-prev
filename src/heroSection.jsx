@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -156,18 +156,20 @@ function HeroSection() {
   return (
     <div ref={wrapperRef}>
       <main
-        className="min-h-screen flex flex-col justify-end items-start p-5 md:p-10"
+        className="min-h-screen flex flex-col md:justify-end justify-center items-start p-5 md:p-10"
         id="main"
       >
         <div className="flex gap-3 md:gap-5 justify-end items-end">
-          <div className="bg-secondary w-2 md:w-3 h-20 md:h-45 hero-anim"></div>
-          <div>
-            <small className="text-primary tracking-widest text-sm md:text-lg mb-3 md:mb-5 pl-3 md:pl-5 hero-anim">
-              Hi, I'm a <span className="font-bold">Motion Designer</span>
-            </small>
-            <h1 className="title text-secondary text-5xl md:text-9xl tracking-tighter ">
-              Alvin Ferdinand
-            </h1>
+          <div className="flex gap-3">
+            <div className="bg-secondary w-2 md:w-3 h-30 md:h-45 hero-anim"></div>
+            <div>
+              <small className="text-primary tracking-widest text-sm md:text-lg mb-3 md:mb-5 pl-3 md:pl-5 hero-anim">
+                Hi, I'm a <span className="font-bold">Motion Designer</span>
+              </small>
+              <h1 className="title text-secondary text-5xl md:text-9xl tracking-tighter ">
+                Alvin Ferdinand
+              </h1>
+            </div>
           </div>
         </div>
       </main>

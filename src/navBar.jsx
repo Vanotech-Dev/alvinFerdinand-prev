@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { House, X } from "lucide-react";
+import { House, X, Lightbulb, FilePenLine, User } from "lucide-react";
 
 function Navbar() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -26,7 +26,7 @@ function Navbar() {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 425);
+      setIsMobile(window.innerWidth <= 525);
     };
 
     checkScreenSize();
@@ -58,16 +58,23 @@ function Navbar() {
 
   const navItem = [
     { to: "/", label: "Home", icons: <House size={15} /> },
-    { to: "/#skills", label: "skill" },
-    { to: "/project", label: "project" },
-    { to: "/contact", label: "contact" },
+    { to: "/#skills", label: "skill", icons: <Lightbulb /> },
+    { to: "/project", label: "project", icons: <FilePenLine /> },
+    { to: "/contact", label: "contact", icons: <User /> },
   ];
 
   const currentNav = navItem.find((item) => item.to === location.pathname);
   const pageSelected = currentNav?.label || "Home";
   const iconSelected = currentNav?.icons || null;
 
-  const waktuSekarang = new Date();
+  const [waktuSekarang, setWaktuSekarang] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWaktuSekarang(new Date());
+    }, 1);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -142,15 +149,10 @@ function Navbar() {
               <div className="mx-auto w-screen min-h-full bg-secondary/70 p-4">
                 <ul className="mt-20 flex flex-col items-start gap-4 pl-5 text-tertiary/80  title text-[22px]">
                   <li>
-                    <Link to="/#main" onClick={() => setIsOpen(false)}>
+                    <Link to="/" onClick={() => setIsOpen(false)}>
                       Home
                     </Link>
                   </li>
-
-                  <li>
-                    <a href="#skills">Skills</a>
-                  </li>
-
                   <li>
                     <Link to="/project" onClick={() => setIsOpen(false)}>
                       Project

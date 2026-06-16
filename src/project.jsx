@@ -3,13 +3,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Video, X } from "lucide-react";
 
-const categories = ["SaaS Explainer", "Looping", "Branding"];
+const categories = ["Video Explainer", "Looping", "Branding"];
 
 const projectsData = [
   {
     id: 1,
     title: "Project 1",
-    category: "SaaS Explainer",
+    category: "Video Explainer",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
@@ -39,7 +39,7 @@ const projectsData = [
   {
     id: 4,
     title: "Project 4",
-    category: "SaaS Explainer",
+    category: "Video Explainer",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
@@ -69,7 +69,7 @@ const projectsData = [
   {
     id: 7,
     title: "Project 7",
-    category: "SaaS Explainer",
+    category: "Video Explainer",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
