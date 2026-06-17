@@ -25,7 +25,7 @@ const projectsData = [
       "A looping building animation created from a photograph I captured myself. The original image was carefully redrawn and transformed into a stylized illustration before being brought to life through seamless motion. This project highlights my process of combining photography, illustration, and motion design to create a unique animated scene.",
     tools: ["After Effects"],
     type: "gif",
-    media: "/video/loop/Alvin-Looping-1.gif",
+    media: "/video/loop/Alvin-Looping-2.gif",
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const projectsData = [
       "A playful burger looping animation designed to showcase motion principles, timing, and visual rhythm. The project emphasizes smooth looping techniques.",
     tools: ["After Effects"],
     type: "gif",
-    media: "/video/loop/Alvin-Looping-2.gif",
+    media: "/video/loop/Alvin-Looping-1.gif",
   },
   {
     id: 4,
