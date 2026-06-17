@@ -1,40 +1,41 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Video, X } from "lucide-react";
+import { Type, Video, X } from "lucide-react";
 
 const categories = ["Video Explainer", "Looping", "Branding"];
 
 const projectsData = [
   {
     id: 1,
-    title: "Project 1",
+    title: "Ledgr",
     category: "Video Explainer",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
+      "Ledgr is a simple and powerful transaction tracker that helps you monitor your finances and grow your money with clarity and control.",
     tools: ["After Effects"],
-    video:
-      "https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-loop-41855-large.mp4",
+    type: "video",
+    media: "/video/Alvin-Project-1.mp4",
+    thumbnail: "image/Thumbnail1.png",
   },
   {
     id: 2,
-    title: "Project 2",
+    title: "Building",
     category: "Looping",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    video:
-      "https://assets.mixkit.co/videos/preview/mixkit-liquid-iridescent-fluid-background-loop-51475-large.mp4",
+    type: "gif",
+    media: "/video/Alvin-Project-2.gif",
   },
   {
     id: 3,
-    title: "Project 3",
-    category: "Branding",
+    title: "Burger",
+    category: "Looping",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    video:
-      "https://assets.mixkit.co/videos/preview/mixkit-3d-render-of-abstract-geometric-shapes-48358-large.mp4",
+    type: "gif",
+    media: "/video/Alvin-Project-3.gif",
   },
   {
     id: 4,
@@ -43,7 +44,8 @@ const projectsData = [
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    video:
+    type: "video",
+    media:
       "https://assets.mixkit.co/videos/preview/mixkit-retro-futuristic-grid-background-41617-large.mp4",
   },
   {
@@ -53,7 +55,8 @@ const projectsData = [
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    video:
+    type: "video",
+    media:
       "https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-loop-41855-large.mp4",
   },
   {
@@ -63,7 +66,8 @@ const projectsData = [
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    video:
+    type: "video",
+    media:
       "https://assets.mixkit.co/videos/preview/mixkit-liquid-iridescent-fluid-background-loop-51475-large.mp4",
   },
   {
@@ -73,7 +77,8 @@ const projectsData = [
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    video:
+    type: "video",
+    media:
       "https://assets.mixkit.co/videos/preview/mixkit-3d-render-of-abstract-geometric-shapes-48358-large.mp4",
   },
   {
@@ -83,7 +88,8 @@ const projectsData = [
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    video:
+    type: "video",
+    media:
       "https://assets.mixkit.co/videos/preview/mixkit-retro-futuristic-grid-background-41617-large.mp4",
   },
   {
@@ -93,7 +99,8 @@ const projectsData = [
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    video:
+    type: "video",
+    media:
       "https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-loop-41855-large.mp4",
   },
   {
@@ -103,7 +110,8 @@ const projectsData = [
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
-    video:
+    type: "video",
+    media:
       "https://assets.mixkit.co/videos/preview/mixkit-liquid-iridescent-fluid-background-loop-51475-large.mp4",
   },
 ];
@@ -178,11 +186,11 @@ function Project() {
                       <button
                         onClick={() => setActiveFilter(cat)}
                         className={`cursor-pointer text-left transition-all duration-250 relative py-0.5
-                          ${
-                            activeFilter === cat
-                              ? "text-secondary font-bold"
-                              : "text-secondary/50 hover:text-secondary/80"
-                          }`}
+                            ${
+                              activeFilter === cat
+                                ? "text-secondary font-bold"
+                                : "text-secondary/50 hover:text-secondary/80"
+                            }`}
                       >
                         {cat}
                         {activeFilter === cat && (
@@ -213,11 +221,11 @@ function Project() {
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
                 className={`px-4 py-2 text-xs uppercase tracking-wider rounded-full transition-all duration-200 shrink-0 cursor-pointer
-                  ${
-                    activeFilter === cat
-                      ? "bg-secondary text-white font-semibold shadow-sm"
-                      : "bg-secondary/5 text-secondary/60 hover:bg-secondary/10"
-                  }`}
+                    ${
+                      activeFilter === cat
+                        ? "bg-secondary text-white font-semibold shadow-sm"
+                        : "bg-secondary/5 text-secondary/60 hover:bg-secondary/10"
+                    }`}
               >
                 {cat}
               </button>
@@ -246,14 +254,22 @@ function Project() {
                   {/* Thumbnail / Video Container */}
                   <div className="w-full aspect-square overflow-hidden bg-secondary/5 relative rounded-sm shadow-[0_4px_20px_rgba(0,0,0,0.015)] flex flex-col items-center justify-center border border-secondary/5">
                     {hoveredProjectId === project.id ? (
-                      <video
-                        src={project.video}
-                        className="w-full h-full object-cover"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                      />
+                      project.type === "gif" ? (
+                        <img
+                          src={project.media}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <video
+                          src={project.media}
+                          className="w-full h-full object-cover"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                        />
+                      )
                     ) : (
                       <div className="flex flex-col items-center justify-center gap-3 transition-all duration-500 group-hover:scale-105">
                         <Video className="w-8 h-8 text-secondary/35 group-hover:text-secondary/60 transition-colors duration-300" />
@@ -268,10 +284,10 @@ function Project() {
 
                   {/* Typography */}
                   <div className="text-center mt-5">
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-secondary font-text group-hover:text-secondary/75 transition-colors">
+                    <h3 className="text-base md:text-lg font-bold uppercase tracking-wider text-secondary font-text group-hover:text-secondary/75 transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-xs text-primary/75 mt-1.5 font-title italic">
+                    <p className="text-xs md:text-sm text-primary/75 mt-1.5 font-title italic">
                       {project.category}
                     </p>
                   </div>
@@ -308,15 +324,23 @@ function Project() {
 
             {/* Video Preview on Left/Top */}
             <div className="w-full md:w-1/2 aspect-square md:aspect-auto bg-black flex items-center justify-center shrink-0">
-              <video
-                src={selectedProject.video}
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-              />
+              {selectedProject.type === "gif" ? (
+                <img
+                  src={selectedProject.media}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <video
+                  src={selectedProject.media}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                />
+              )}
             </div>
 
             {/* Info on Right/Bottom */}

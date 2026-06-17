@@ -184,7 +184,7 @@ function HeroSection() {
             <img
               src="image/alvin3.jpeg"
               alt="alvin-02"
-              className="h-80 md:h-180 w-full md:w-auto object-cover bg-top aspect-auto md:aspect-4/3"
+              className="h-80 md:h-180 w-full md:w-full object-cover bg-top aspect-auto md:aspect-4/3"
             />
           </div>
           {/* text */}
@@ -192,7 +192,7 @@ function HeroSection() {
             <h2 className="title text-3xl md:text-5xl text-secondary flex-2">
               About Me
             </h2>
-            <p className="text-primary text-sm md:text-lg tracking-widest flex-1 mt-4 md:mt-0">
+            <p className="text-primary text-base md:text-xl tracking-wide leading-relaxed flex-1 mt-4 md:mt-0">
               Hello! I'm Alvin, i'm specializing in SaaS explainer videos and
               UI-driven motion design. I craft clean, modern visuals that
               simplify complex ideas through refined animation, minimal
