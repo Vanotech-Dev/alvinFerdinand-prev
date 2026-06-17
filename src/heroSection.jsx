@@ -170,7 +170,7 @@ function HeroSection() {
               <small className="text-primary tracking-widest text-sm md:text-lg mb-3 md:mb-5 pl-3 md:pl-5 hero-anim">
                 Hi, I'm a <span className="font-bold">Motion Designer</span>
               </small>
-              <h1 className="title text-secondary text-5xl md:text-9xl tracking-tighter ">
+              <h1 className="title text-secondary text-5xl md:text-9xl tracking-tighter hero-anim">
                 Alvin Ferdinand
               </h1>
             </div>

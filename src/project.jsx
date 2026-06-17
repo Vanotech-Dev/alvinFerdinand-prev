@@ -14,7 +14,7 @@ const projectsData = [
       "Ledgr is a simple and powerful transaction tracker that helps you monitor your finances and grow your money with clarity and control.",
     tools: ["After Effects"],
     type: "video",
-    media: "/video/Alvin-Project-1.mp4",
+    media: "/video/Explainer/Alvin-Project-1.mp4",
     thumbnail: "image/Thumbnail1.png",
   },
   {
@@ -25,7 +25,7 @@ const projectsData = [
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
     type: "gif",
-    media: "/video/Alvin-Project-2.gif",
+    media: "/video/loop/Alvin-Project-2.gif",
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const projectsData = [
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
     tools: ["After Effects"],
     type: "gif",
-    media: "/video/Alvin-Project-3.gif",
+    media: "/video/loop/Alvin-Project-3.gif",
   },
   {
     id: 4,
