@@ -14,7 +14,7 @@ const projectsData = [
       "Ledgr is a simple and powerful transaction tracker that helps you monitor your finances and grow your money with clarity and control.",
     tools: ["After Effects"],
     type: "video",
-    media: "/video/Explainer/Alvin-Project-1.mp4",
+    media: "/video/Explainer/Alvin-Explainer-1.mp4",
     thumbnail: "image/Thumbnail1.png",
   },
   {
@@ -22,31 +22,30 @@ const projectsData = [
     title: "Building",
     category: "Looping",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
+      "A looping building animation created from a photograph I captured myself. The original image was carefully redrawn and transformed into a stylized illustration before being brought to life through seamless motion. This project highlights my process of combining photography, illustration, and motion design to create a unique animated scene.",
     tools: ["After Effects"],
     type: "gif",
-    media: "/video/loop/Alvin-Project-2.gif",
+    media: "/video/loop/Alvin-Looping-1.gif",
   },
   {
     id: 3,
     title: "Burger",
     category: "Looping",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
+      "A playful burger looping animation designed to showcase motion principles, timing, and visual rhythm. The project emphasizes smooth looping techniques.",
     tools: ["After Effects"],
     type: "gif",
-    media: "/video/loop/Alvin-Project-3.gif",
+    media: "/video/loop/Alvin-Looping-2.gif",
   },
   {
     id: 4,
-    title: "Project 4",
-    category: "Video Explainer",
+    title: "Drive Thru Turbo Lite",
+    category: "Looping",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
+      "Turbo Bite is a stylized drive-thru animation centered around a unique vehicle character navigating a lively fast-food scene. Through carefully crafted motion and seamless transitions, this project explores character-driven animation and environment design while maintaining a fun and energetic atmosphere.",
     tools: ["After Effects"],
-    type: "video",
-    media:
-      "https://assets.mixkit.co/videos/preview/mixkit-retro-futuristic-grid-background-41617-large.mp4",
+    type: "gif",
+    media: "/video/loop/Alvin-Looping-3.gif",
   },
   {
     id: 5,
@@ -328,12 +327,12 @@ function Project() {
                 <img
                   src={selectedProject.media}
                   alt={selectedProject.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               ) : (
                 <video
                   src={selectedProject.media}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   autoPlay
                   muted
                   loop
