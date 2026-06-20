@@ -49,14 +49,14 @@ const projectsData = [
   },
   {
     id: 5,
-    title: "Project 5",
-    category: "Looping",
+    title: "Noir Cafe Logo",
+    category: "Branding",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
+      "A handcrafted logo animation created for Noir Café, blending the warmth of artisanal coffee culture with a minimalist motion design approach. The animation features hand-drawn coffee beans that organically emerge and flow into the final logo mark, bringing a sense of craftsmanship, authenticity, and character to the brand. Through subtle movement and carefully timed transitions, the piece captures the journey from coffee seed to cup, creating a welcoming and memorable visual identity.",
     tools: ["After Effects"],
     type: "video",
     media:
-      "https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-loop-41855-large.mp4",
+      "/video/brand/Alvin-Branding-1.mp4",
   },
   {
     id: 6,

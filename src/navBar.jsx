@@ -58,9 +58,9 @@ function Navbar() {
 
   const navItem = [
     { to: "/", label: "Home", icons: <House size={15} /> },
-    { to: "/#skills", label: "skill", icons: <Lightbulb /> },
-    { to: "/project", label: "project", icons: <FilePenLine /> },
-    { to: "/contact", label: "contact", icons: <User /> },
+    { to: "/#skills", label: "Skill", icons: <Lightbulb /> },
+    { to: "/project", label: "Project", icons: <FilePenLine /> },
+    { to: "/contact", label: "Contact", icons: <User /> },
   ];
 
   const currentNav = navItem.find((item) => item.to === location.pathname);
