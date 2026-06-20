@@ -252,8 +252,7 @@ function Project() {
                 >
                   {/* Thumbnail / Video Container */}
                   <div className="w-full aspect-square overflow-hidden bg-secondary/5 relative rounded-sm shadow-[0_4px_20px_rgba(0,0,0,0.015)] flex flex-col items-center justify-center border border-secondary/5">
-                    {hoveredProjectId === project.id ? (
-                      project.type === "gif" ? (
+                      {project.type === "gif" ? (
                         <img
                           src={project.media}
                           alt={project.title}
@@ -267,15 +266,15 @@ function Project() {
                           muted
                           loop
                           playsInline
+                          onTimeUpdate={(e) => {
+                            const video = e.currentTarget;
+
+                            if (video.currentTime >= 4) { // Preview hanya 4 detik
+                              video.currentTime = 0;
+                              video.play();
+                            }
+                          }}
                         />
-                      )
-                    ) : (
-                      <div className="flex flex-col items-center justify-center gap-3 transition-all duration-500 group-hover:scale-105">
-                        <Video className="w-8 h-8 text-secondary/35 group-hover:text-secondary/60 transition-colors duration-300" />
-                        <span className="text-[9px] tracking-widest uppercase text-secondary/25 group-hover:text-secondary/45 transition-colors duration-300 font-semibold">
-                          Hover to Preview
-                        </span>
-                      </div>
                     )}
                     {/* Dark subtle overlay on hover */}
                     <div className="absolute inset-0 bg-secondary/2 opacity-0 group-hover:opacity-100 transition-opacity duration-350 pointer-events-none" />
