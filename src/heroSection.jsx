@@ -165,12 +165,12 @@ function HeroSection() {
       >
         <div className="flex gap-3 md:gap-5 justify-center md:justify-end items-center md:items-end">
           <div className="flex gap-3">
-            <div className="bg-secondary w-2 md:w-3 h-30 md:h-45 hero-anim"></div>
-            <div>
+            <div className="bg-secondary w-2 md:w-3 h-28 lg:h-45 hero-anim"></div>
+            <div className="flex flex-col justify-center md:justify-end">
               <small className="text-primary tracking-widest text-sm md:text-lg mb-3 md:mb-5 pl-3 md:pl-5 hero-anim">
                 Hi, I'm a <span className="font-bold">Motion Designer</span>
               </small>
-              <h1 className="title text-secondary text-5xl md:text-9xl tracking-tighter hero-anim">
+              <h1 className="title text-secondary text-4xl md:text-6xl lg:text-9xl tracking-tighter hero-anim ml-2.5">
                 Alvin Ferdinand
               </h1>
             </div>

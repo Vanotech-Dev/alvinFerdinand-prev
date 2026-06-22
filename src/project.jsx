@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Type, Video, X } from "lucide-react";
@@ -121,12 +121,71 @@ function Project() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [mutedVideo, setMutedVideo] = useState(false)
+  const [isPlay, setIsPlay] = useState(true);
+  const [changeSection, setChangeSection] = useState(true);
+  const [isMobile, setIsMobile] = useState(false)
   const headerRef = useRef(null);
+  const portofolioRef = useRef(null);
+  const videoRef = useRef(null);
   const listRef = useRef(null);
 
-  if (window.scrollY) {
+  // check size of screen if this mobile or not 
+  useEffect(() => {
+    const checkSizeScreen = () => {
+      setIsMobile(window.innerWidth <= 525);
+    };
 
-  }
+    checkSizeScreen();
+
+    window.addEventListener("resize", checkSizeScreen);
+
+    return () => {
+      window.removeEventListener("resize", checkSizeScreen);
+    };
+  })
+
+  {/* play and pause button */ }
+  const handleClickVideo = () => {
+    if (isPlay === true) {
+      setIsPlay(false);
+      videoRef.current.pause();
+    }
+    if (isPlay === false) {
+      setIsPlay(true);
+      videoRef.current.play();
+    };
+  };
+
+  {/* check condition video */ }
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([e]) => {
+        setMutedVideo(e.isIntersecting);
+        setChangeSection(e.isIntersecting);
+
+        // pause, set duration to 0, and change condition play into false 
+        if (!e.isIntersecting && videoRef.current) {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+          setIsPlay(false);
+        } else {
+          videoRef.current.play();
+          setIsPlay(true)
+        }
+
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+    if (portofolioRef.current) {
+      observer.observe(portofolioRef.current);
+    };
+
+
+    return () => observer.disconnect();
+  }, []);
+
 
   const filteredProjects =
     activeFilter === "All"
@@ -164,16 +223,26 @@ function Project() {
   return (
     <>
       {/* Header */}
-      <main className="min-w-screen min-h-screen">
-        <div className="flex justify-center items-center h-screen">
+
+      <main className="min-w-screen min-h-screen hidden md:block bg-white" id="portofolio" ref={portofolioRef}>
+        <div className="flex flex-col justify-center items-center h-screen">
           <video
             src="/video/portofolio/Alvin-Portofolio.mp4"
-            className="w-full h-full object-cover"
+            className="md:w-full md:h-full object-cover md:-translate-y-10 xl:translate-none"
             autoPlay
             loop
+            muted={!mutedVideo}
+            ref={videoRef}
           />
-        </div>
-      </main>
+          <div className="absolute bottom-5 left-5">
+            <button type="button" className="flex px-3 py-2 text-tertiary bg-secondary/85 rounded-full"
+              onClick={handleClickVideo}
+            >
+              {isPlay ? "❚❚" : "▶"}
+            </button>
+          </div>
+        </div >
+      </main >
       <section className="pt-24 md:pt-28 pb-8 px-5 md:px-10" ref={headerRef}>
         <small className="text-primary tracking-widest text-sm mb-4 block proj-header">
           Portfolio — {projectsData.length} Projects
@@ -313,86 +382,88 @@ function Project() {
       </section>
 
       {/* Modal Detail Proyek */}
-      {selectedProject && (
-        <div
-          className="fixed inset-0 z-100 flex items-center justify-center bg-secondary/60 backdrop-blur-xs p-4 cursor-default animate-fade-in"
-          onClick={() => setSelectedProject(null)}
-        >
+      {
+        selectedProject && (
           <div
-            className="bg-tertiary w-full max-w-3xl rounded-lg overflow-hidden shadow-2xl relative border border-secondary/15 flex flex-col md:flex-row max-h-[90vh] md:max-h-none"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-100 flex items-center justify-center bg-secondary/60 backdrop-blur-xs p-4 cursor-default animate-fade-in"
+            onClick={() => setSelectedProject(null)}
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 p-1.5 rounded-full bg-secondary/10 hover:bg-secondary/20 text-secondary transition-all cursor-pointer z-10"
+            <div
+              className="bg-tertiary w-full max-w-3xl rounded-lg overflow-hidden shadow-2xl relative border border-secondary/15 flex flex-col md:flex-row max-h-[90vh] md:max-h-none"
+              onClick={(e) => e.stopPropagation()}
             >
-              <X className="w-5 h-5" />
-            </button>
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 p-1.5 rounded-full bg-secondary/10 hover:bg-secondary/20 text-secondary transition-all cursor-pointer z-10"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-            {/* Video Preview on Left/Top */}
-            <div className="w-full md:w-1/2 aspect-square md:aspect-auto bg-black flex items-center justify-center shrink-0">
-              {selectedProject.type === "gif" ? (
-                <img
-                  src={selectedProject.media}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-contain"
-                />
-              ) : (
-                <video
-                  src={selectedProject.media}
-                  className="w-full h-full object-contain"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                />
-              )}
-            </div>
-
-            {/* Info on Right/Bottom */}
-            <div className="p-6 md:p-8 flex flex-col justify-between flex-1 overflow-y-auto">
-              <div>
-                <small className="text-xs uppercase tracking-widest text-primary/60 font-semibold block mb-1">
-                  {selectedProject.category}
-                </small>
-                <h2 className="title text-3xl text-secondary font-bold mb-4">
-                  {selectedProject.title}
-                </h2>
-
-                <div className="mb-6">
-                  <h4 className="text-[10px] uppercase tracking-widest text-secondary/40 font-bold mb-2">
-                    Description
-                  </h4>
-                  <p className="text-sm text-secondary/80 leading-relaxed font-text">
-                    {selectedProject.description}
-                  </p>
-                </div>
+              {/* Video Preview on Left/Top */}
+              <div className="w-full md:w-1/2 aspect-square md:aspect-auto bg-black flex items-center justify-center shrink-0">
+                {selectedProject.type === "gif" ? (
+                  <img
+                    src={selectedProject.media}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <video
+                    src={selectedProject.media}
+                    className="w-full h-full object-contain"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                  />
+                )}
               </div>
 
-              <div>
-                <div className="border-t border-secondary/10 pt-4 flex justify-between items-center text-xs">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-widest text-secondary/40 font-bold block mb-0.5">
-                      Tools Used
-                    </span>
-                    <span className="text-secondary/70 font-semibold">
-                      {selectedProject.tools.join(", ")}
-                    </span>
+              {/* Info on Right/Bottom */}
+              <div className="p-6 md:p-8 flex flex-col justify-between flex-1 overflow-y-auto">
+                <div>
+                  <small className="text-xs uppercase tracking-widest text-primary/60 font-semibold block mb-1">
+                    {selectedProject.category}
+                  </small>
+                  <h2 className="title text-3xl text-secondary font-bold mb-4">
+                    {selectedProject.title}
+                  </h2>
+
+                  <div className="mb-6">
+                    <h4 className="text-[10px] uppercase tracking-widest text-secondary/40 font-bold mb-2">
+                      Description
+                    </h4>
+                    <p className="text-sm text-secondary/80 leading-relaxed font-text">
+                      {selectedProject.description}
+                    </p>
                   </div>
-                  <button
-                    onClick={() => setSelectedProject(null)}
-                    className="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition-colors cursor-pointer text-xs uppercase tracking-wider font-semibold"
-                  >
-                    Close
-                  </button>
+                </div>
+
+                <div>
+                  <div className="border-t border-secondary/10 pt-4 flex justify-between items-center text-xs">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-widest text-secondary/40 font-bold block mb-0.5">
+                        Tools Used
+                      </span>
+                      <span className="text-secondary/70 font-semibold">
+                        {selectedProject.tools.join(", ")}
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setSelectedProject(null)}
+                      className="px-4 py-2 bg-secondary text-white rounded hover:bg-secondary/90 transition-colors cursor-pointer text-xs uppercase tracking-wider font-semibold"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       {/* Footer */}
       <footer className="bg-secondary px-5 md:px-10 py-14 flex flex-col md:flex-row justify-between items-start md:items-end text-tertiary/85 gap-8">
@@ -402,7 +473,7 @@ function Project() {
           </small>
           <a
             href="mailto:alvinferdinand723@gmail.com"
-            className="text-xl md:text-2xl text-white hover:text-tertiary/60 transition-colors duration-200"
+            className="text-lg md:text-2xl text-white hover:text-tertiary/60 transition-colors duration-200"
           >
             alvinferdinand723@gmail.com
           </a>
