@@ -3,8 +3,9 @@ import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
 
 const socials = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/alvinfrd_?igsh=emp1aXBwbHp5Mm10" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/alvin-ferdinand-17a15b340?utm_source=share_via&utm_content=profile&utm_medium=member_ios" },
+  { label: "Behance", href: "https://www.behance.net/alvinferdinand" }
 ];
 
 function Contact() {
@@ -43,7 +44,7 @@ function Contact() {
           </h1>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-16 mt-14 md:mt-20">
+        <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-16 mt-5 md:mt-10">
           {/* Email */}
           <div className="contact-col">
             <span className="text-xs tracking-widest text-secondary/30 uppercase block mb-3">
