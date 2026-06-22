@@ -129,21 +129,6 @@ function Project() {
   const videoRef = useRef(null);
   const listRef = useRef(null);
 
-  // check size of screen if this mobile or not 
-  useEffect(() => {
-    const checkSizeScreen = () => {
-      setIsMobile(window.innerWidth <= 525);
-    };
-
-    checkSizeScreen();
-
-    window.addEventListener("resize", checkSizeScreen);
-
-    return () => {
-      window.removeEventListener("resize", checkSizeScreen);
-    };
-  })
-
   {/* play and pause button */ }
   const handleClickVideo = () => {
     if (isPlay === true) {
