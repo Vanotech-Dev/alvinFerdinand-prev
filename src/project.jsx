@@ -119,10 +119,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Project() {
   const [activeFilter, setActiveFilter] = useState("All");
-  const [hoveredProjectId, setHoveredProjectId] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [mutedVideo, setMutedVideo] = useState(false)
   const headerRef = useRef(null);
   const listRef = useRef(null);
+
+  if (window.scrollY) {
+
+  }
 
   const filteredProjects =
     activeFilter === "All"
@@ -160,6 +164,16 @@ function Project() {
   return (
     <>
       {/* Header */}
+      <main className="min-w-screen min-h-screen">
+        <div className="flex justify-center items-center h-screen">
+          <video
+            src="/video/portofolio/Alvin-Portofolio.mp4"
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+          />
+        </div>
+      </main>
       <section className="pt-24 md:pt-28 pb-8 px-5 md:px-10" ref={headerRef}>
         <small className="text-primary tracking-widest text-sm mb-4 block proj-header">
           Portfolio — {projectsData.length} Projects
@@ -185,11 +199,10 @@ function Project() {
                       <button
                         onClick={() => setActiveFilter(cat)}
                         className={`cursor-pointer text-left transition-all duration-250 relative py-0.5
-                            ${
-                              activeFilter === cat
-                                ? "text-secondary font-bold"
-                                : "text-secondary/50 hover:text-secondary/80"
-                            }`}
+                            ${activeFilter === cat
+                            ? "text-secondary font-bold"
+                            : "text-secondary/50 hover:text-secondary/80"
+                          }`}
                       >
                         {cat}
                         {activeFilter === cat && (
@@ -220,11 +233,10 @@ function Project() {
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
                 className={`px-4 py-2 text-xs uppercase tracking-wider rounded-full transition-all duration-200 shrink-0 cursor-pointer
-                    ${
-                      activeFilter === cat
-                        ? "bg-secondary text-white font-semibold shadow-sm"
-                        : "bg-secondary/5 text-secondary/60 hover:bg-secondary/10"
-                    }`}
+                    ${activeFilter === cat
+                    ? "bg-secondary text-white font-semibold shadow-sm"
+                    : "bg-secondary/5 text-secondary/60 hover:bg-secondary/10"
+                  }`}
               >
                 {cat}
               </button>
@@ -246,35 +258,33 @@ function Project() {
                 <div
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
-                  onMouseEnter={() => setHoveredProjectId(project.id)}
-                  onMouseLeave={() => setHoveredProjectId(null)}
                   className="group flex flex-col cursor-pointer proj-item"
                 >
                   {/* Thumbnail / Video Container */}
                   <div className="w-full aspect-square overflow-hidden bg-secondary/5 relative rounded-sm shadow-[0_4px_20px_rgba(0,0,0,0.015)] flex flex-col items-center justify-center border border-secondary/5">
-                      {project.type === "gif" ? (
-                        <img
-                          src={project.media}
-                          alt={project.title}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <video
-                          src={project.media}
-                          className="w-full h-full object-cover"
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          onTimeUpdate={(e) => {
-                            const video = e.currentTarget;
+                    {project.type === "gif" ? (
+                      <img
+                        src={project.media}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <video
+                        src={project.media}
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        onTimeUpdate={(e) => {
+                          const video = e.currentTarget;
 
-                            if (video.currentTime >= 4) { // Preview hanya 4 detik
-                              video.currentTime = 0;
-                              video.play();
-                            }
-                          }}
-                        />
+                          if (video.currentTime >= 4) { // Preview hanya 4 detik
+                            video.currentTime = 0;
+                            video.play();
+                          }
+                        }}
+                      />
                     )}
                     {/* Dark subtle overlay on hover */}
                     <div className="absolute inset-0 bg-secondary/2 opacity-0 group-hover:opacity-100 transition-opacity duration-350 pointer-events-none" />
