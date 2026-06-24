@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Type, Video, X } from "lucide-react";
+import { X } from "lucide-react";
 
 const categories = ["Video Explainer", "Looping", "Branding"];
 
@@ -69,14 +69,13 @@ const projectsData = [
   },
   {
     id: 7,
-    title: "Project 7",
-    category: "Video Explainer",
+    title: "Crown Bite",
+    category: "Branding",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
+      "Logo animation created for Crown Bite, a fast-food brand concept. The animation combines playful motion, bold shapes, and energetic transitions to reflect a fun and appetizing brand personality.",
     tools: ["After Effects"],
     type: "video",
-    media:
-      "https://assets.mixkit.co/videos/preview/mixkit-3d-render-of-abstract-geometric-shapes-48358-large.mp4",
+    media: "/video/brand/Alvin-Branding-2.mp4",
   },
   {
     id: 8,
