@@ -79,14 +79,13 @@ const projectsData = [
   },
   {
     id: 8,
-    title: "Project 8",
-    category: "Looping",
+    title: "Sippo",
+    category: "Branding",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
+      "Sippo is a modern and playful wine brand animation project designed to capture a vibrant and approachable personality. The animation combines smooth liquid-inspired motion, subtle textured grain, and clean typography to create a premium yet welcoming visual experience. Through dynamic transitions and organic movement, the project aims to reflect the social and celebratory essence of sharing wine in a contemporary lifestyle.",
     tools: ["After Effects"],
     type: "video",
-    media:
-      "https://assets.mixkit.co/videos/preview/mixkit-retro-futuristic-grid-background-41617-large.mp4",
+    media: "/video/brand/Alvin-Branding-3.mp4",
   },
   {
     id: 9,
