@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { X } from "lucide-react";
 
-const categories = ["Video Explainer", "Looping", "Branding"];
+const categories = ["Video Explainer", "Looping", "Branding", "UI Animation"];
 
 const projectsData = [
   {
@@ -89,14 +89,13 @@ const projectsData = [
   },
   {
     id: 9,
-    title: "Project 9",
-    category: "Branding",
+    title: "Apple Score",
+    category: "UI Animation",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur placeat rem, quasi maxime hic impedit vitae nam officia in reprehenderit, nobis fugiat ducimus ipsam neque ipsum totam eligendi id delectus!",
+      "A sleek UI animation inspired by Apple's Sleep Score interface, focusing on smooth transitions, clear data presentation, and refined micro-interactions to deliver a premium user experience.",
     tools: ["After Effects"],
-    type: "video",
-    media:
-      "https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-loop-41855-large.mp4",
+    type: "gif",
+    media: "/video/ui/Alvin-ui-1.gif",
   },
   {
     id: 10,
